@@ -1,4 +1,5 @@
 console.log('Renderer');
 
 const app = document.getElementById('app')!;
-app.innerHTML =  '!!';
+// @ts-ignore
+app.innerHTML =  window.app.label;

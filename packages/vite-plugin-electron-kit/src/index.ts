@@ -4,6 +4,9 @@ import {runApp} from "./utils/runApp";
 import AddressInfo = WebSocket.AddressInfo;
 import {ChildProcess} from "child_process";
 
+const PRELOAD_ARGS = ['./preload/index.ts','./dist','preload.js'] as const;
+const MAIN_ARGS = ['./main/index.ts','./dist','main.js'] as const;
+
 type Options = {
     main:{
         root:string;
@@ -43,23 +46,24 @@ export function electron(options?:Options):PluginOption[]{
                     const address = server.httpServer?.address() as AddressInfo;
                     process.env['RENDERER_URL'] = `http://localhost:${address.port}`;
 
-                    await buildBundle('./preload/index.ts','./dist','preload.js',()=>{
+                    await buildBundle(...PRELOAD_ARGS,()=>{
                         server.ws.send({type:'full-reload'});
                     },true)
-                    await buildBundle('./main/index.ts', './dist','main.js',async ()=>{
+                    await buildBundle(...MAIN_ARGS,async ()=>{
                         if(app){
                             app.kill();
+                            console.log('🚀 restart electron app');
                         }
                         app = await runApp();
                     },true)
                 })
             },
             async buildStart(){
-                await buildBundle('./preload/index.ts','./dist','preload.js', ()=>{
-                    console.log('preload build end');
+                await buildBundle(...PRELOAD_ARGS, ()=>{
+                    console.log('🚀 preload build end');
                 })
-                await buildBundle('./main/index.ts','./dist','main.js',()=> {
-                    console.log('main build end');
+                await buildBundle(...MAIN_ARGS,()=> {
+                    console.log('🚀 main build end');
                 })
             }
         },

@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "electron-kit-preview"
+    "start": "preview"
   },
   "keywords": [],
   "author": "",
