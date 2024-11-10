@@ -7,11 +7,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "preview":"./cli/preview.js"
+    "preview": "cli/preview.js"
   },
   "scripts": {
-    "build": "rollup -c",
-    "publish": "pnpm publish --access public"
+    "build": "rollup -c"
   },
   "keywords": [
     "vite-plugin",
