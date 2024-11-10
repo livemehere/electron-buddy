@@ -1,7 +1,7 @@
-import {PluginOption, ViteDevServer} from "vite";
-import {join} from 'node:path';
-import buildRollup from "./utils/buildRollup";
+import {PluginOption, ViteDevServer, WebSocket} from "vite";
+import buildBundle from "./utils/buildBundle";
 import {runApp} from "./utils/runApp";
+import AddressInfo = WebSocket.AddressInfo;
 
 type Options = {
     main:{
@@ -16,28 +16,32 @@ type Options = {
 }
 
 export function electron(options?:Options):PluginOption[]{
-    let rendererServer:ViteDevServer;
-    const rendererUrl = ' http://localhost:5173';
-    process.env['RENDERER_URL'] = rendererUrl;
-
     return [
         {
             name:'electron-kit-renderer',
             config:()=>({
-                root:'./renderer',
                 base:'',
                 build:{
                     emptyOutDir:false,
-                    outDir: '../dist/renderer',
-                },
+                    outDir: './dist/renderer',
+                    rollupOptions:{
+                        input:{
+                            app: './renderer/index.html'
+                        }
+                    }
+                }
             }),
         },
         {
             name:'electron-kit-main',
             async configureServer(server){
-                console.log('configure server')
-                await buildRollup(join(process.cwd(),'main/index.ts'), join(process.cwd(),'dist'),'main.js')
-                await buildRollup(join(process.cwd(),'preload/index.ts'), join(process.cwd(),'dist'),'preload.js')
+                server.httpServer?.once('listening',()=>{
+                    const address = server.httpServer?.address() as AddressInfo;
+                    process.env['RENDERER_URL'] = `http://localhost:${address.port}/renderer/index.html`;
+
+                })
+                await buildBundle('./main/index.ts', './dist','main.js')
+                await buildBundle('./preload/index.ts','./dist','preload.js')
                 await runApp();
             }
         },
