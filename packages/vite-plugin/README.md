@@ -1,4 +1,4 @@
-# @electron-kit/vite-plugin
+# @electron-buddy/vite-plugin
 
 > 🚨 WIP project, so there no custom options available yet. Please must check folder structure.
 

@@ -24,7 +24,7 @@ export function electron(options?:Options):PluginOption[]{
 
     return [
         {
-            name:'electron-kit-renderer',
+            name:'electron-buddy-renderer',
             config:(_,{command, isPreview})=>{
                 return {
                     root: './renderer',
@@ -40,7 +40,7 @@ export function electron(options?:Options):PluginOption[]{
             }
         },
         {
-            name:'electron-kit-main-preload',
+            name:'electron-buddy-main-preload',
             configureServer(server){
                 server.httpServer?.once('listening',async ()=>{
                     const address = server.httpServer?.address() as AddressInfo;

@@ -46,7 +46,7 @@ importers:
 
   packages/vite-plugin: {}
 
-  packages/vite-plugin-electron-kit: {}
+  packages/vite-plugin-electron-buddy: {}
 
 packages:
 
