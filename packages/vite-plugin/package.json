@@ -10,7 +10,8 @@
     "preview":"./cli/preview.js"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "publish": "pnpm publish --access public"
   },
   "keywords": [
     "vite-plugin",
