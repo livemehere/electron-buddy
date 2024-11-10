@@ -34,15 +34,14 @@ export function electron(options?:Options):PluginOption[]{
         },
         {
             name:'electron-kit-main',
-            async configureServer(server){
-                server.httpServer?.once('listening',()=>{
+            configureServer(server){
+                server.httpServer?.once('listening',async ()=>{
                     const address = server.httpServer?.address() as AddressInfo;
                     process.env['RENDERER_URL'] = `http://localhost:${address.port}/renderer/index.html`;
-
+                    await buildBundle('./main/index.ts', './dist','main.js')
+                    await buildBundle('./preload/index.ts','./dist','preload.js')
+                    await runApp();
                 })
-                await buildBundle('./main/index.ts', './dist','main.js')
-                await buildBundle('./preload/index.ts','./dist','preload.js')
-                await runApp();
             }
         },
     ]
