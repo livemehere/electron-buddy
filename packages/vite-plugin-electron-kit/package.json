@@ -4,7 +4,7 @@
   "description": "vite plugin for electron quick start",
   "main": "dist/index.js",
   "bin": {
-    "electron-kit-preview":"./cli/preview.js"
+    "preview":"./cli/preview.js"
   },
   "scripts": {
     "build": "rollup -c"
