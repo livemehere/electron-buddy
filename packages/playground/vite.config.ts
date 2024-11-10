@@ -1,5 +1,5 @@
 import {defineConfig} from "vite";
-import {electron} from "vite-plugin-electron-kit";
+import {electron} from "@electron-kit/vite-plugin";
 
 export default defineConfig({
     plugins:[

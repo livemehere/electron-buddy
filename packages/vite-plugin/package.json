@@ -1,8 +1,11 @@
 {
-  "name": "vite-plugin-electron-kit",
-  "version": "1.0.0",
+  "name": "@electron-kit/vite-plugin",
+  "version": "0.0.1",
+  "author": "livemehere",
+  "license": "ISC",
   "description": "vite plugin for electron quick start",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "preview":"./cli/preview.js"
   },
@@ -13,6 +16,10 @@
     "vite-plugin",
     "electron"
   ],
-  "author": "livemehere",
-  "license": "ISC"
+  "files": [
+    "cli",
+    "dist",
+    "README.md",
+    "package.json"
+  ]
 }

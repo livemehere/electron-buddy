@@ -13,6 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vite-plugin-electron-kit": "workspace:^"
+    "@electron-kit/vite-plugin": "workspace:^"
   }
 }
