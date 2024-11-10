@@ -38,7 +38,7 @@ importers:
 
   packages/playground:
     devDependencies:
-      '@electron-kit/vite-plugin':
+      '@electron-buddy/vite-plugin':
         specifier: workspace:^
         version: link:../vite-plugin
 
