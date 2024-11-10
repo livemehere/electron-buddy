@@ -22,14 +22,18 @@ export function electron(options?:Options):PluginOption[]{
     return [
         {
             name:'electron-kit-renderer',
-            config:(_,{command})=>{
+            config:(_,{command, isPreview})=>{
+                console.log('mode!!:',command, isPreview);
                 return {
-                    root:'./renderer',
+                    root: './renderer',
                     base:'',
                     build:{
                         emptyOutDir:command === 'build',
                         outDir: '../dist/renderer',
                     },
+                    server:{
+                        open:isPreview
+                    }
                 }
             }
         },
