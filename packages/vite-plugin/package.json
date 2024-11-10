@@ -1,6 +1,6 @@
 {
   "name": "@electron-buddy/vite-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "livemehere",
   "license": "ISC",
   "description": "vite plugin for electron quick start",

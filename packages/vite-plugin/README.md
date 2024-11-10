@@ -5,9 +5,9 @@
 ## Installation
 
 ```bash
-npm i -D @electron-kit/vite-plugin
-yarn add -D @electron-kit/vite-plugin
-pnpm add -D @electron-kit/vite-plugin
+npm i -D @electron-buddy/vite-plugin
+yarn add -D @electron-buddy/vite-plugin
+pnpm add -D @electron-buddy/vite-plugin
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ pnpm add -D @electron-kit/vite-plugin
 
 ```js   
 import {defineConfig} from "vite";
-import {electron} from "@electron-kit/vite-plugin";
+import {electron} from "@electron-buddy/vite-plugin";
 
 export default defineConfig({
     plugins:[
