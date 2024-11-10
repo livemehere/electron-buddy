@@ -1,6 +1,6 @@
 import {build} from "vite";
 
-export default function buildBundle(input:string, outDir:string, filename:string){
+export default function buildBundle(input:string, outDir:string, filename:string,onBuildEnd:()=>void, watch = false){
     return build({
         configFile:false,
         build:{
@@ -15,7 +15,16 @@ export default function buildBundle(input:string, outDir:string, filename:string
                 output:{
                     entryFileNames:filename,
                 }
+            },
+            watch: watch ? {} : null,
+        },
+        plugins:[
+            {
+                name:'on-build-end',
+                buildEnd(){
+                    onBuildEnd();
+                }
             }
-        }
+        ]
     })
 }

@@ -22,17 +22,19 @@ export function electron(options?:Options):PluginOption[]{
     return [
         {
             name:'electron-kit-renderer',
-            config:()=>({
-                root:'./renderer',
-                base:'',
-                build:{
-                    emptyOutDir:false,
-                    outDir: '../dist/renderer',
+            config:(_,{command})=>{
+                return {
+                    root:'./renderer',
+                    base:'',
+                    build:{
+                        emptyOutDir:command === 'build',
+                        outDir: '../dist/renderer',
+                    },
                 }
             }
-        )},
+        },
         {
-            name:'electron-kit-main',
+            name:'electron-kit-main-preload',
             configureServer(server){
                 server.httpServer?.once('listening',async ()=>{
                     const address = server.httpServer?.address() as AddressInfo;
@@ -47,7 +49,14 @@ export function electron(options?:Options):PluginOption[]{
                         }
                         app = await runApp();
                     },true)
-
+                })
+            },
+            async buildStart(){
+                await buildBundle('./preload/index.ts','./dist','preload.js', ()=>{
+                    console.log('preload build end');
+                })
+                await buildBundle('./main/index.ts','./dist','main.js',()=> {
+                    console.log('main build end');
                 })
             }
         },
