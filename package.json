@@ -7,7 +7,7 @@
     "vite",
     "plugin"
   ],
-  "author": "",
+  "author": "livemehere",
   "license": "ISC",
   "packageManager": "pnpm@9.12.3"
 }
