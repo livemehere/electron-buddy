@@ -23,7 +23,6 @@ export function electron(options?:Options):PluginOption[]{
         {
             name:'electron-kit-renderer',
             config:(_,{command, isPreview})=>{
-                console.log('mode!!:',command, isPreview);
                 return {
                     root: './renderer',
                     base:'',
