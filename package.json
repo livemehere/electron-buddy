@@ -1,0 +1,13 @@
+{
+  "name": "electron-all-in-one",
+  "version": "1.0.0",
+  "description": "run and build electron app with super fast",
+  "keywords": [
+    "electron",
+    "vite",
+    "plugin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.12.3"
+}
