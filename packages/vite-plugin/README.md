@@ -8,9 +8,9 @@ This plugin simplifies the process of building an Electron application by focusi
 # Installation
 
 ```bash
-npm i -D @electron-buddy/vite-plugin
-yarn add -D @electron-buddy/vite-plugin
-pnpm add -D @electron-buddy/vite-plugin
+npm i -D @electron-buddy/vite-plugin electron
+yarn add -D @electron-buddy/vite-plugin electron
+pnpm add -D @electron-buddy/vite-plugin electron
 ```
 
 # Getting Started
