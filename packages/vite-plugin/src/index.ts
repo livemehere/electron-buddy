@@ -3,23 +3,31 @@ import buildBundle from "./utils/buildBundle";
 import {runApp} from "./utils/runApp";
 import AddressInfo = WebSocket.AddressInfo;
 import {ChildProcess} from "child_process";
+import {join} from 'path';
 
-const PRELOAD_ARGS = ['./preload/index.ts','./dist','preload.js'] as const;
-const MAIN_ARGS = ['./main/index.ts','./dist','main.js'] as const;
+const OUT_DIR = 'dist';
+const MAIN_ENTRY = './main/index.ts';
+const PRELOAD_ENTRY = './preload/index.ts';
 
 type Options = {
-    main:{
-        root:string;
+    outDir?:string;
+    preload?:{
+        entry?:string;
     },
-    preload:{
-        root:string;
-    },
-    renderer:{
+    main?:{
+        entry?:string;
     }
 }
 
-export function electron(options?:Options):PluginOption[]{
+export async function electron(options?:Options):Promise<PluginOption[]>{
     let app:ChildProcess|null = null;
+    const outDirBase = join(process.cwd(), options?.outDir ?? OUT_DIR);
+
+    const mainEntry = options?.main?.entry ?? MAIN_ENTRY;
+    const preloadEntry = options?.preload?.entry ?? PRELOAD_ENTRY;
+
+    const preloadBuildArgs = [preloadEntry,outDirBase,'preload.js'] as const;
+    const mainBuildArgs = [mainEntry,outDirBase,'main.js'] as const;
 
     return [
         {
@@ -29,7 +37,7 @@ export function electron(options?:Options):PluginOption[]{
                     base:'',
                     build:{
                         emptyOutDir:command === 'build',
-                        outDir: '../dist/renderer',
+                        outDir: join(outDirBase,'renderer'),
                     },
                     server:{
                         open:isPreview
@@ -44,10 +52,10 @@ export function electron(options?:Options):PluginOption[]{
                     const address = server.httpServer?.address() as AddressInfo;
                     process.env['RENDERER_URL'] = `http://localhost:${address.port}`;
 
-                    await buildBundle(...PRELOAD_ARGS,()=>{
+                    await buildBundle(...preloadBuildArgs,()=>{
                         server.ws.send({type:'full-reload'});
                     },true)
-                    await buildBundle(...MAIN_ARGS,async ()=>{
+                    await buildBundle(...mainBuildArgs,async ()=>{
                         if(app){
                             app.kill();
                             console.log('🚀 restart electron app');
@@ -57,10 +65,10 @@ export function electron(options?:Options):PluginOption[]{
                 })
             },
             async buildStart(){
-                await buildBundle(...PRELOAD_ARGS, ()=>{
+                await buildBundle(...preloadBuildArgs, ()=>{
                     console.log('🚀 preload build end');
                 })
-                await buildBundle(...MAIN_ARGS,()=> {
+                await buildBundle(...mainBuildArgs,()=> {
                     console.log('🚀 main build end');
                 })
             }
