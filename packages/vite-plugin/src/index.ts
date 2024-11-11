@@ -15,7 +15,6 @@ type Options = {
         root:string;
     },
     renderer:{
-        root:string;
     }
 }
 
@@ -27,7 +26,6 @@ export function electron(options?:Options):PluginOption[]{
             name:'electron-buddy-renderer',
             config:(_,{command, isPreview})=>{
                 return {
-                    root: './renderer',
                     base:'',
                     build:{
                         emptyOutDir:command === 'build',
