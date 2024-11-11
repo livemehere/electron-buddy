@@ -45,8 +45,9 @@ export default defineConfig({
 ```ts
 import { BrowserWindow } from 'electron';
 
-const { width, height, path } = option;
 const win = new BrowserWindow({
+  width:1280,
+  height:720,
   webPreferences: {
     preload: join(__dirname, './preload.js'), // relative path (both)
     sandbox: false
