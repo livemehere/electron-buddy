@@ -1,6 +1,8 @@
 # @electron-buddy/vite-plugin
 
-> 🚨 WIP project, so there no custom options available yet. Please must check folder structure.
+> 🚨 WIP project: no custom options are available yet. Please ensure the folder structure is followed as shown below.
+
+This plugin simplifies the process of building an Electron application by focusing on the renderer while also seamlessly managing the builds for the main and preload processes. It allows for an easy setup and coordinated build process, making it more convenient to work with all parts of an Electron app in a unified workflow.
 
 # Installation
 
@@ -28,7 +30,7 @@ pnpm add -D @electron-buddy/vite-plugin
 
 ## vite.config.ts
 
-> Recommended to set `root` (renderer directory) as directory not a root of the project.
+> It’s recommended to set root to the renderer directory, not the root of the project.
 
 ```js
 import { defineConfig } from 'vite';
@@ -62,7 +64,7 @@ if (process.env.NODE_ENV === 'development' && process.env['RENDERER_URL']) {
 
 ## Default Folder Structure
 
-If you setup config as above, then you must follow this folder structure.
+If you configure as above, ensure that you follow this folder structure.
 
 ```bash
 
@@ -89,21 +91,22 @@ src
 
 ## Custom OutDir & Entries
 
-> ❗️Don't forget to update `package.json` main field when you change the output directory. `./out/main.js`
+> ❗️Remember to update the main field in package.json if you change the output directory (e.g., to ./out/main.js).
 
 ```ts
 export default defineConfig({
-  root: './renderer',
-  plugins: [
-    electron({
-      outDir: './out', // custom output directory
-      preload: {
-        entry: './preload2/index.ts' // custom entry
-      },
-      main: {
-        entry: './main2/index.ts' // custom entry
-      }
-    })
-  ]
+    root: './renderer',
+    plugins: [
+        electron({
+            outDir: './out', // custom output directory
+            preload: {
+                entry: './preload2/index.ts' // custom preload entry
+            },
+            main: {
+                entry: './main2/index.ts' // custom main entry
+            }
+        })
+    ]
 });
+
 ```
