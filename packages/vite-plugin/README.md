@@ -1,7 +1,5 @@
 # @electron-buddy/vite-plugin
 
-> 🚨 WIP project: no custom options are available yet. Please ensure the folder structure is followed as shown below.
-
 This plugin simplifies the process of building an Electron application by focusing on the renderer while also seamlessly managing the builds for the main and preload processes. It allows for an easy setup and coordinated build process, making it more convenient to work with all parts of an Electron app in a unified workflow.
 
 # Installation
