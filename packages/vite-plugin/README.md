@@ -1,6 +1,9 @@
 # @electron-buddy/vite-plugin
 
+![](https://github.com/livemehere/electron-buddy/blob/master/docs/img/electron-buddy-vite-plugin.jpg?raw=true)
+
 This plugin simplifies the process of building an Electron application by focusing on the renderer while also seamlessly managing the builds for the main and preload processes. It allows for an easy setup and coordinated build process, making it more convenient to work with all parts of an Electron app in a unified workflow.
+
 
 # Installation
 

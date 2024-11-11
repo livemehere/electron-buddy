@@ -1,8 +1,9 @@
 # @electron-buddy
 
+![electron-buddy.jpg](docs/img/electron-buddy.jpg)
+
 A collection of tools to help you build Electron apps with Vite.
 
-![electron-buddy.jpg](docs/img/electron-buddy.jpg)
 
 ## [example](https://github.com/livemehere/electron-buddy/tree/master/packages/playground)
 
