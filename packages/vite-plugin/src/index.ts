@@ -5,9 +5,9 @@ import AddressInfo = WebSocket.AddressInfo;
 import {ChildProcess} from "child_process";
 import {join} from 'path';
 
-const OUT_DIR = 'dist';
-const MAIN_ENTRY = './main/index.ts';
-const PRELOAD_ENTRY = './preload/index.ts';
+const DEFAULT_OUT_DIR = 'dist';
+const DEFAULT_MAIN_ENTRY = './main/index.ts';
+const DEFAULT_PRELOAD_ENTRY = './preload/index.ts';
 
 type Options = {
     outDir?:string;
@@ -19,12 +19,12 @@ type Options = {
     }
 }
 
-export async function electron(options?:Options):Promise<PluginOption[]>{
+export async function electron(options:Options = {}):Promise<PluginOption[]>{
     let app:ChildProcess|null = null;
-    const outDirBase = join(process.cwd(), options?.outDir ?? OUT_DIR);
+    const outDirBase = join(process.cwd(), options.outDir ?? DEFAULT_OUT_DIR);
 
-    const mainEntry = options?.main?.entry ?? MAIN_ENTRY;
-    const preloadEntry = options?.preload?.entry ?? PRELOAD_ENTRY;
+    const mainEntry = options.main?.entry ?? DEFAULT_MAIN_ENTRY;
+    const preloadEntry = options.preload?.entry ?? DEFAULT_PRELOAD_ENTRY;
 
     const preloadBuildArgs = [preloadEntry,outDirBase,'preload.js'] as const;
     const mainBuildArgs = [mainEntry,outDirBase,'main.js'] as const;
