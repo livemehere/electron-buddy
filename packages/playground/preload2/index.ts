@@ -1,5 +1,5 @@
-import {contextBridge} from 'electron'
+import { contextBridge } from 'electron';
 
-contextBridge.exposeInMainWorld('app',{
-    label:'app'
-})
+contextBridge.exposeInMainWorld('app', {
+  label: 'app'
+});

@@ -1,5 +1,5 @@
-import { spawn } from 'child_process'
+import { spawn } from 'child_process';
 
-export async function runApp(){
-    return spawn('electron',['.'],{stdio:'inherit'});
+export async function runApp() {
+  return spawn('electron', ['.'], { stdio: 'inherit' });
 }

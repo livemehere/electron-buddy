@@ -17,7 +17,7 @@ pnpm add -D @electron-buddy/vite-plugin
 ```json
 {
   "main": "dist/main.js",
-  "scripts" : {
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -30,35 +30,33 @@ pnpm add -D @electron-buddy/vite-plugin
 
 > Recommended to set `root` (renderer directory) as directory not a root of the project.
 
-```js   
-import {defineConfig} from "vite";
-import {electron} from "@electron-buddy/vite-plugin";
+```js
+import { defineConfig } from 'vite';
+import { electron } from '@electron-buddy/vite-plugin';
 
 export default defineConfig({
-    root:'./renderer', // index.html directory
-    plugins:[
-        electron()
-    ],
-})
+  root: './renderer', // index.html directory
+  plugins: [electron()]
+});
 ```
 
 ## main entry file (`main/index.ts`)
 
 ```ts
-import {BrowserWindow} from "electron";
+import { BrowserWindow } from 'electron';
 
-const {width, height, path} = option;
+const { width, height, path } = option;
 const win = new BrowserWindow({
-    webPreferences:{
-        preload: join(__dirname, './preload.js'), // relative path (both)
-        sandbox: false,
-    }
-})
+  webPreferences: {
+    preload: join(__dirname, './preload.js'), // relative path (both)
+    sandbox: false
+  }
+});
 
-if(process.env.NODE_ENV === 'development' && process.env['RENDERER_URL']){
-    await win.loadURL(process.env['RENDERER_URL']) // vite dev server url (dev server)
-}else{
-    await win.loadFile(join(__dirname, './renderer/index.html')) // relative path (build)
+if (process.env.NODE_ENV === 'development' && process.env['RENDERER_URL']) {
+  await win.loadURL(process.env['RENDERER_URL']); // vite dev server url (dev server)
+} else {
+  await win.loadFile(join(__dirname, './renderer/index.html')); // relative path (build)
 }
 ```
 
@@ -95,17 +93,17 @@ src
 
 ```ts
 export default defineConfig({
-    root:'./renderer',
-    plugins:[
-        electron({
-            outDir:'./out', // custom output directory
-            preload:{
-                entry:'./preload2/index.ts' // custom entry
-            },
-            main:{
-                entry:'./main2/index.ts' // custom entry
-            }
-        })
-    ],
-})
+  root: './renderer',
+  plugins: [
+    electron({
+      outDir: './out', // custom output directory
+      preload: {
+        entry: './preload2/index.ts' // custom entry
+      },
+      main: {
+        entry: './main2/index.ts' // custom entry
+      }
+    })
+  ]
+});
 ```
