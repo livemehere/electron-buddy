@@ -1,0 +1,26 @@
+{
+  "appId": "com.electron-buddy.playground",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ]
+  },
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": [
+          "universal"
+        ]
+      }
+    ]
+  }
+}
