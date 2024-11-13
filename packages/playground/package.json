@@ -2,7 +2,7 @@
   "name": "playground",
   "version": "1.0.0",
   "description": "",
-  "main": "out/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

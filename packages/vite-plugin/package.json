@@ -4,6 +4,8 @@
   "author": "livemehere",
   "license": "ISC",
   "description": "vite plugin for electron quick start",
+  "homepage": "https://github.com/livemehere/electron-buddy",
+  "repository": "https://github.com/livemehere/electron-buddy",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
