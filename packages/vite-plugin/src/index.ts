@@ -2,7 +2,7 @@ import { PluginOption, WebSocket } from 'vite';
 import buildBundle from './utils/buildBundle';
 import { runApp } from './utils/runApp';
 import AddressInfo = WebSocket.AddressInfo;
-import { ChildProcess } from 'child_process';
+import { type ChildProcess } from 'child_process';
 import { join } from 'path';
 
 const DEFAULT_OUT_DIR = 'dist';

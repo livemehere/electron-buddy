@@ -1,5 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 const genOption = (typeOnly) => {
   /** @type {import('rollup').RollupOptions} */
@@ -7,11 +9,14 @@ const genOption = (typeOnly) => {
     input: 'src/index.ts',
     output: {
       file: typeOnly ? 'dist/index.d.ts' : 'dist/index.js',
-      format: 'cjs'
+      format: 'cjs',
+      inlineDynamicImports: true
     },
-    plugins: [{ ...(typeOnly ? dts() : typescript()) }]
+    external: ['vite'],
+    plugins: [{ ...(typeOnly ? dts() : typescript()) }, nodeResolve(), commonjs()]
   };
+
   return options;
 };
 
-export default [genOption(false), genOption(true)];
+export default [genOption(false)];

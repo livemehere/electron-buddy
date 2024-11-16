@@ -67,7 +67,21 @@ importers:
         specifier: ^25.1.8
         version: 25.1.8(electron-builder-squirrel-windows@25.1.8)
 
-  packages/vite-plugin: {}
+  packages/vite-plugin:
+    dependencies:
+      cross-spawn:
+        specifier: ^7.0.5
+        version: 7.0.5
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^28.0.1
+        version: 28.0.1(rollup@4.25.0)
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.3.0
+        version: 15.3.0(rollup@4.25.0)
+      '@types/cross-spawn':
+        specifier: ^6.0.6
+        version: 6.0.6
 
 packages:
 
@@ -385,6 +399,24 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==, tarball: https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz}
     engines: {node: '>=14'}
 
+  '@rollup/plugin-commonjs@28.0.1':
+    resolution: {integrity: sha512-+tNWdlWKbpB3WgBN7ijjYkq9X5uhjmcvyjEght4NmH5fAU++zfQzAJ6wumLS+dNcvwEZhKx2Z+skY8m7v0wGSA==, tarball: https://registry.npmjs.org/@rollup/plugin-commonjs/-/plugin-commonjs-28.0.1.tgz}
+    engines: {node: '>=16.0.0 || 14 >= 14.17'}
+    peerDependencies:
+      rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-node-resolve@15.3.0':
+    resolution: {integrity: sha512-9eO5McEICxMzJpDW9OnMYSv4Sta3hmt7VtBFz5zR9273suNOydOyq/FrGeGy+KsTRFm8w0SLVhzig2ILFT63Ag==, tarball: https://registry.npmjs.org/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.3.0.tgz}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
   '@rollup/plugin-typescript@12.1.1':
     resolution: {integrity: sha512-t7O653DpfB5MbFrqPe/VcKFFkvRuFNp9qId3xq4Eth5xlyymzxNpye2z8Hrl0RIMuXTSr5GGcFpkdlMeacUiFQ==, tarball: https://registry.npmjs.org/@rollup/plugin-typescript/-/plugin-typescript-12.1.1.tgz}
     engines: {node: '>=14.0.0'}
@@ -549,6 +581,9 @@ packages:
   '@types/cacheable-request@6.0.3':
     resolution: {integrity: sha512-IQ3EbTzGxIigb1I3qPZc1rWJnH0BmSKv5QYTalEwweFvyBDLSAe24zP0le/hyi7ecGfZVlIVAg4BZqb8WBwKqw==, tarball: https://registry.npmjs.org/@types/cacheable-request/-/cacheable-request-6.0.3.tgz}
 
+  '@types/cross-spawn@6.0.6':
+    resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==, tarball: https://registry.npmjs.org/@types/cross-spawn/-/cross-spawn-6.0.6.tgz}
+
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==, tarball: https://registry.npmjs.org/@types/debug/-/debug-4.1.12.tgz}
 
@@ -584,6 +619,9 @@ packages:
 
   '@types/react@18.3.12':
     resolution: {integrity: sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==, tarball: https://registry.npmjs.org/@types/react/-/react-18.3.12.tgz}
+
+  '@types/resolve@1.20.2':
+    resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==, tarball: https://registry.npmjs.org/@types/resolve/-/resolve-1.20.2.tgz}
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==, tarball: https://registry.npmjs.org/@types/responselike/-/responselike-1.0.3.tgz}
@@ -883,6 +921,9 @@ packages:
     resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==, tarball: https://registry.npmjs.org/commander/-/commander-5.1.0.tgz}
     engines: {node: '>= 6'}
 
+  commondir@1.0.1:
+    resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==, tarball: https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz}
+
   compare-version@0.1.2:
     resolution: {integrity: sha512-pJDh5/4wrEnXX/VWRZvruAGHkzKdr46z11OlTPN+VrATlWWhSKewNCJ1futCO5C7eJB3nPMFZA1LeYtcFboZ2A==, tarball: https://registry.npmjs.org/compare-version/-/compare-version-0.1.2.tgz}
     engines: {node: '>=0.10.0'}
@@ -952,6 +993,10 @@ packages:
   decompress-response@6.0.0:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==, tarball: https://registry.npmjs.org/decompress-response/-/decompress-response-6.0.0.tgz}
     engines: {node: '>=10'}
+
+  deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==, tarball: https://registry.npmjs.org/deepmerge/-/deepmerge-4.3.1.tgz}
+    engines: {node: '>=0.10.0'}
 
   defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==, tarball: https://registry.npmjs.org/defaults/-/defaults-1.0.4.tgz}
@@ -1099,6 +1144,14 @@ packages:
 
   fd-slicer@1.1.0:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==, tarball: https://registry.npmjs.org/fd-slicer/-/fd-slicer-1.1.0.tgz}
+
+  fdir@6.4.2:
+    resolution: {integrity: sha512-KnhMXsKSPZlAhp7+IjUkRZKPb4fUyccpDrdFXbi4QL1qkmFh9kVY09Yox+n4MaOb3lHZ1Tv829C3oaaXoMYPDQ==, tarball: https://registry.npmjs.org/fdir/-/fdir-6.4.2.tgz}
+    peerDependencies:
+      picomatch: ^3 || ^4
+    peerDependenciesMeta:
+      picomatch:
+        optional: true
 
   filelist@1.0.4:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==, tarball: https://registry.npmjs.org/filelist/-/filelist-1.0.4.tgz}
@@ -1317,6 +1370,12 @@ packages:
 
   is-lambda@1.0.1:
     resolution: {integrity: sha512-z7CMFGNrENq5iFB9Bqo64Xk6Y9sg+epq1myIcdHaGnbMTYOxvzsEtdYqQUylB7LxfkvgrrjP32T6Ywciio9UIQ==, tarball: https://registry.npmjs.org/is-lambda/-/is-lambda-1.0.1.tgz}
+
+  is-module@1.0.0:
+    resolution: {integrity: sha512-51ypPSPCoTEIN9dy5Oy+h4pShgJmPCygKfyRCISBI+JoWT/2oJvK8QPxmwv7b/p239jXrm9M1mlQbyKJ5A152g==, tarball: https://registry.npmjs.org/is-module/-/is-module-1.0.0.tgz}
+
+  is-reference@1.2.1:
+    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==, tarball: https://registry.npmjs.org/is-reference/-/is-reference-1.2.1.tgz}
 
   is-unicode-supported@0.1.0:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==, tarball: https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz}
@@ -2466,6 +2525,28 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@rollup/plugin-commonjs@28.0.1(rollup@4.25.0)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.3(rollup@4.25.0)
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      fdir: 6.4.2(picomatch@4.0.2)
+      is-reference: 1.2.1
+      magic-string: 0.30.12
+      picomatch: 4.0.2
+    optionalDependencies:
+      rollup: 4.25.0
+
+  '@rollup/plugin-node-resolve@15.3.0(rollup@4.25.0)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.3(rollup@4.25.0)
+      '@types/resolve': 1.20.2
+      deepmerge: 4.3.1
+      is-module: 1.0.0
+      resolve: 1.22.8
+    optionalDependencies:
+      rollup: 4.25.0
+
   '@rollup/plugin-typescript@12.1.1(rollup@4.25.0)(tslib@2.8.1)(typescript@5.6.3)':
     dependencies:
       '@rollup/pluginutils': 5.1.3(rollup@4.25.0)
@@ -2609,6 +2690,10 @@ snapshots:
       '@types/node': 22.9.0
       '@types/responselike': 1.0.3
 
+  '@types/cross-spawn@6.0.6':
+    dependencies:
+      '@types/node': 22.9.0
+
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.34
@@ -2651,6 +2736,8 @@ snapshots:
     dependencies:
       '@types/prop-types': 15.7.13
       csstype: 3.1.3
+
+  '@types/resolve@1.20.2': {}
 
   '@types/responselike@1.0.3':
     dependencies:
@@ -3055,6 +3142,8 @@ snapshots:
 
   commander@5.1.0: {}
 
+  commondir@1.0.1: {}
+
   compare-version@0.1.2: {}
 
   compare-versions@6.1.1: {}
@@ -3115,6 +3204,8 @@ snapshots:
   decompress-response@6.0.0:
     dependencies:
       mimic-response: 3.1.0
+
+  deepmerge@4.3.1: {}
 
   defaults@1.0.4:
     dependencies:
@@ -3324,6 +3415,10 @@ snapshots:
   fd-slicer@1.1.0:
     dependencies:
       pend: 1.2.0
+
+  fdir@6.4.2(picomatch@4.0.2):
+    optionalDependencies:
+      picomatch: 4.0.2
 
   filelist@1.0.4:
     dependencies:
@@ -3587,6 +3682,12 @@ snapshots:
   is-interactive@1.0.0: {}
 
   is-lambda@1.0.1: {}
+
+  is-module@1.0.0: {}
+
+  is-reference@1.2.1:
+    dependencies:
+      '@types/estree': 1.0.6
 
   is-unicode-supported@0.1.0: {}
 
