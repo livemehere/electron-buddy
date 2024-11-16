@@ -23,13 +23,5 @@
     "dist",
     "README.md",
     "package.json"
-  ],
-  "dependencies": {
-    "cross-spawn": "^7.0.5"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.1",
-    "@rollup/plugin-node-resolve": "^15.3.0",
-    "@types/cross-spawn": "^6.0.6"
-  }
+  ]
 }

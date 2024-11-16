@@ -1,5 +1,5 @@
-import spawn from 'cross-spawn';
+import { spawn } from 'child_process';
 
 export async function runApp() {
-  return spawn('electron', ['.'], { stdio: 'inherit' });
+  return spawn('electron', ['.'], { stdio: 'inherit', shell: true });
 }

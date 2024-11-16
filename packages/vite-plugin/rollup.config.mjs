@@ -1,7 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 
 const genOption = (typeOnly) => {
   /** @type {import('rollup').RollupOptions} */
@@ -13,7 +11,7 @@ const genOption = (typeOnly) => {
       inlineDynamicImports: true
     },
     external: ['vite'],
-    plugins: [{ ...(typeOnly ? dts() : typescript()) }, nodeResolve(), commonjs()]
+    plugins: [{ ...(typeOnly ? dts() : typescript()) }]
   };
 
   return options;

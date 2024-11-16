@@ -2,7 +2,7 @@ import { PluginOption, WebSocket } from 'vite';
 import buildBundle from './utils/buildBundle';
 import { runApp } from './utils/runApp';
 import AddressInfo = WebSocket.AddressInfo;
-import { type ChildProcess } from 'child_process';
+import { type ChildProcess, exec } from 'child_process';
 import { join } from 'path';
 
 const DEFAULT_OUT_DIR = 'dist';
@@ -63,7 +63,11 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
             ...mainBuildArgs,
             async () => {
               if (app) {
-                app.kill();
+                if (process.platform === 'win32') {
+                  exec(`taskkill /pid ${app.pid} /T /F`);
+                } else {
+                  app.kill();
+                }
                 console.log('🚀 restart electron app');
               }
               app = await runApp();
