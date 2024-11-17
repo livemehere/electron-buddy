@@ -8,6 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "electron-buddy --preview",
+    "build:win-unpacked": "electron-builder --win --dir",
+    "build:mac-unpacked": "electron-builder --mac --dir",
     "build:win": "electron-builder --win",
     "build:mac": "electron-builder --mac"
   },
