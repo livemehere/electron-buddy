@@ -66,8 +66,21 @@ importers:
       electron-builder:
         specifier: ^25.1.8
         version: 25.1.8(electron-builder-squirrel-windows@25.1.8)
+      electron-log:
+        specifier: ^5.2.2
+        version: 5.2.2
 
-  packages/vite-plugin: {}
+  packages/vite-plugin:
+    dependencies:
+      electron:
+        specifier: '*'
+        version: 33.2.0
+      terser:
+        specifier: '*'
+        version: 5.36.0
+      vite:
+        specifier: ^5
+        version: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
 
 packages:
 
@@ -1023,6 +1036,10 @@ packages:
     resolution: {integrity: sha512-poRgAtUHHOnlzZnc9PK4nzG53xh74wj2Jy7jkTrqZ0MWPoHGh1M2+C//hGeYdA+4K8w4yiVCNYoLXF7ySj2Wig==, tarball: https://registry.npmjs.org/electron-builder/-/electron-builder-25.1.8.tgz}
     engines: {node: '>=14.0.0'}
     hasBin: true
+
+  electron-log@5.2.2:
+    resolution: {integrity: sha512-fgvx6srjIHDowJD8WAAjoAXmiTyOz6JnGQoxOtk1mXw7o4S+HutuPHLCsk24xTXqWZgy4uO63NbedG+oEvldLw==, tarball: https://registry.npmjs.org/electron-log/-/electron-log-5.2.2.tgz}
+    engines: {node: '>= 14'}
 
   electron-publish@25.1.7:
     resolution: {integrity: sha512-+jbTkR9m39eDBMP4gfbqglDd6UvBC7RLh5Y0MhFSsc6UkGHj9Vj9TWobxevHYMMqmoujL11ZLjfPpMX+Pt6YEg==, tarball: https://registry.npmjs.org/electron-publish/-/electron-publish-25.1.7.tgz}
@@ -2413,7 +2430,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
-    optional: true
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
@@ -3070,8 +3086,7 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  commander@2.20.3:
-    optional: true
+  commander@2.20.3: {}
 
   commander@5.1.0: {}
 
@@ -3236,6 +3251,8 @@ snapshots:
       - bluebird
       - electron-builder-squirrel-windows
       - supports-color
+
+  electron-log@5.2.2: {}
 
   electron-publish@25.1.7:
     dependencies:
@@ -4256,7 +4273,6 @@ snapshots:
       acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
-    optional: true
 
   tmp-promise@3.0.3:
     dependencies:
