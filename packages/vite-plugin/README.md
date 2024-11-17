@@ -1,10 +1,22 @@
-# @electron-buddy/vite-plugin
-
-![](https://github.com/livemehere/electron-buddy/blob/master/docs/img/electron-buddy-vite-plugin.jpg?raw=true)
+<p align="center">
+  <img width="600" src="https://github.com/livemehere/electron-buddy/blob/master/docs/img/electron-buddy-vite-plugin.jpg?raw=true">
+</p>
+<div align="center">
+  <h1>@electron-buddy/vite-plugin</h1>
+</div>
 
 This plugin simplifies the process of building an Electron application by focusing on the renderer while also seamlessly managing the builds for the main and preload processes. It allows for an easy setup and coordinated build process, making it more convenient to work with all parts of an Electron app in a unified workflow.
 
-[full-example](https://github.com/livemehere/electron-buddy/tree/master/packages/playground)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@electron-buddy/vite-plugin">
+    <img src="https://img.shields.io/npm/v/@electron-buddy/vite-plugin.svg">
+  </a>
+  <a href="https://npmjs.com/package/@electron-buddy/vite-plugin">
+    <img src="https://img.shields.io/npm/dm/@electron-buddy/vite-plugin.svg">
+  </a>
+</p>
+
+[Full-example](https://github.com/livemehere/electron-buddy/tree/master/packages/playground)
 
 # Installation
 

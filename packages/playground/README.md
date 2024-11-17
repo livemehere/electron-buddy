@@ -1,6 +1,13 @@
-# @electron-buddy-playground
+<p align="center">
+  <img width="600" src="https://github.com/livemehere/electron-buddy/blob/master/docs/img/electron-buddy-vite-plugin.jpg?raw=true">
+</p>
+<div align="center">
+  <h1>@electron-buddy/playgroud</h1>
+</div>
 
-This is a playground for using `@electron-buddy` package and other core packages.
+<p align="center">
+    This is a playground for using `@electron-buddy` package and other core packages.
+</p>
 
 ## Core Dependencies
 
