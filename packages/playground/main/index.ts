@@ -27,5 +27,5 @@ app.on('window-all-closed', () => {
 
 async function autoUpdate() {
   autoUpdater.logger = log;
-  await autoUpdater.checkForUpdatesAndNotify();
+  await autoUpdater.checkForUpdates();
 }
