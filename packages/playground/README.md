@@ -17,6 +17,8 @@ pnpm add -D typescript vite electron electron-builder @electron-buddy/vite-plugi
 
 ## Core Scripts
 
+> ❗️Build each platform separately to prevent any issues. (If you build for Windows on macOS, the NSIS uninstall.exe may fail.)
+
 ```json
 ...
   "main": "dist/main.js",
@@ -25,10 +27,12 @@ pnpm add -D typescript vite electron electron-builder @electron-buddy/vite-plugi
     "build": "vite build",
     "preview": "vite preview",
     "start": "electron-buddy --preview",
-    "build:win-unpacked": "electron-builder --win --dir",
-    "build:mac-unpacked": "electron-builder --mac --dir",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac"
+    "unpack:win": "pnpm build && electron-builder --win --dir", // build with excutable program without packaging.
+    "unpack:mac": "pnpm build && electron-builder --mac --dir", // build with excutable program without packaging.
+    "package:win": "pnpm build && electron-builder --win --publish never", // build with packaging.
+    "package:mac": "pnpm build && electron-builder --mac --publish never", // build with packaging.
+    "publish:win": "pnpm build && electron-builder --win --publish always", // build with packaging and publish to (github|s3|...).
+    "publish:mac": "pnpm build && electron-builder --mac --publish always" // build with packaging and publish to (github|s3|...).
   }
 ...
 ```
@@ -54,33 +58,39 @@ export default defineConfig({
 import { Configuration } from 'electron-builder';
 
 const options: Configuration = {
-  appId: 'com.electron-buddy.playground', // your product id
-  productName: 'Electron-Buddy-Playground', // your product name
-  artifactName: '${productName}-${version}-${os}.${ext}',
-  directories: {
-    output: 'release/${version}'
-  },
-  files: ['dist'],
-  nsis: {
-    deleteAppDataOnUninstall: true
-  },
-  win: {
-    target: [
-      {
-        target: 'nsis', // 'nsis' for auto updater
-        arch: ['x64']
-      }
-    ]
-  },
-  mac: {
-    target: [
-      {
-        target: 'dmg', // 'dmg' for auto updater
-        arch: ['universal']
-      }
-    ]
-  }
+    appId: 'com.electron-buddy.playground', // Your app id
+    productName: 'Electron-Buddy-Playground', // Your app name
+    artifactName: '${productName}-${version}-${os}.${ext}',
+    directories: {
+        output: 'release/${version}'
+    },
+    files: ['dist'],
+    nsis: {
+        deleteAppDataOnUninstall: true
+    },
+    publish: {
+        provider: 'github', // Your publish provider
+        owner: 'livemehere', // if github, your name
+        repo: 'electron-buddy' // if github, your repo name
+    },
+    win: {
+        target: [
+            {
+                target: 'nsis',
+                arch: ['x64']
+            }
+        ]
+    },
+    mac: {
+        target: [
+            {
+                target: 'dmg',
+                arch: ['universal']
+            }
+        ]
+    }
 };
 
 export default options;
+
 ```

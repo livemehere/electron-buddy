@@ -28,4 +28,7 @@ app.on('window-all-closed', () => {
 async function autoUpdate() {
   autoUpdater.logger = log;
   await autoUpdater.checkForUpdates();
+  // NOTICE TO Renderer or Notification to user to restart app when download finished.
+  // If download finished, autoUpdater will emit 'update-downloaded' event. or
+  // you can call autoUpdater.quitAndInstall() to restart app immediately.
 }
