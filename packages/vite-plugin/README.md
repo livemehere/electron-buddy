@@ -137,3 +137,7 @@ export default defineConfig({
         --help      Show help message
         --preview   Run electron app with 'main' entry file (same as 'electron .')
 ```
+
+# Notice
+
+- Only `Dependencies` are packed in the final build. `DevDependencies` are not included.
