@@ -1,6 +1,6 @@
 {
   "name": "electron-buddy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "run and build electron app with super fast",
   "homepage": "https://github.com/livemehere/electron-buddy",
   "repository": "https://github.com/livemehere/electron-buddy",

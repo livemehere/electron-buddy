@@ -17,4 +17,4 @@ const genOption = (typeOnly) => {
   return options;
 };
 
-export default [genOption(false)];
+export default [genOption(false), genOption(true)];
