@@ -9,7 +9,7 @@ const args = argsToMap(process.argv);
 if (isEmpty(args)) {
   console.error('[@electron-buddy/vite-plugin] No arguments provided');
   printHelp();
-  return;
+  process.exit(1);
 }
 
 if (args.help) {
