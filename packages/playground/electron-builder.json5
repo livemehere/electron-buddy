@@ -3,12 +3,18 @@
   "directories": {
     "output": "release/${version}"
   },
+  "files": [
+    "dist"
+  ],
+  "nsis": {
+    "deleteAppDataOnUninstall": true,
+  },
   "win": {
     "target": [
       {
         "target": "nsis",
         "arch": [
-          "x64"
+          "x64",
         ]
       }
     ]
