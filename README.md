@@ -6,7 +6,7 @@
 </div>
 
 <p align="center">
-    A collection of tools to help you build Electron apps with Vite.
+    A collection of tools to help you build Electron apps.
 </p>
 
 ## [Full-example](https://github.com/livemehere/electron-buddy/tree/master/packages/playground)
