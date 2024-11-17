@@ -17,6 +17,7 @@ export default function buildBundle(
         entry: input,
         formats: ['cjs']
       },
+      minify: 'terser',
       rollupOptions: {
         output: {
           entryFileNames: filename

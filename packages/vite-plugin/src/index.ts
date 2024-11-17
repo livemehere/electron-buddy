@@ -37,7 +37,8 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
           base: '',
           build: {
             emptyOutDir: command === 'build',
-            outDir: join(outDirBase, 'renderer')
+            outDir: join(outDirBase, 'renderer'),
+            minify: command === 'build' ? 'terser' : false
           },
           server: {
             open: isPreview
