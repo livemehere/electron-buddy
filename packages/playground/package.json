@@ -8,10 +8,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "electron-buddy --preview",
-    "build:win-unpacked": "electron-builder --win --dir",
-    "build:mac-unpacked": "electron-builder --mac --dir",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac"
+    "build:win": "electron-builder --win --dir",
+    "build:mac": "electron-builder --mac --dir",
+    "build:all": "electron-builder --win --mac --dir",
+    "package:win": "electron-builder --win",
+    "package:mac": "electron-builder --mac",
+    "package:all": "electron-builder --win --mac",
+    "publish:all": "electron-builder --win --mac --publish always"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +28,9 @@
     "electron-builder": "^25.1.8"
   },
   "dependencies": {
+    "electron-log": "^5.2.2",
+    "electron-updater": "^6.3.9",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "electron-log": "^5.2.2"
+    "react-dom": "^18.3.1"
   }
 }

@@ -11,6 +11,11 @@ const options: Configuration = {
   nsis: {
     deleteAppDataOnUninstall: true
   },
+  publish: {
+    provider: 'github',
+    owner: 'livemehere',
+    repo: 'electron-buddy'
+  },
   win: {
     target: [
       {
