@@ -1,4 +1,9 @@
-#!/usr/bin/env node
-
 const { spawn } = require('child_process');
-spawn('electron', ['.'], { stdio: 'inherit' });
+
+const preview = () => {
+  spawn('electron', ['.'], { stdio: 'inherit', shell: true });
+};
+
+module.exports = {
+  preview
+};
