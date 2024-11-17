@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "electron-buddy playground app",
   "main": "dist/main.js",
   "scripts": {
@@ -8,13 +8,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "electron-buddy --preview",
-    "build:win": "electron-builder --win --dir",
-    "build:mac": "electron-builder --mac --dir",
-    "build:all": "electron-builder --win --mac --dir",
-    "package:win": "electron-builder --win",
-    "package:mac": "electron-builder --mac",
-    "package:all": "electron-builder --win --mac",
-    "publish:all": "electron-builder --win --mac --publish always"
+    "unpack:win": "pnpm build && electron-builder --win --dir",
+    "unpack:mac": "pnpm build && electron-builder --mac --dir",
+    "package:win": "pnpm build && electron-builder --win --publish never",
+    "package:mac": "pnpm build && electron-builder --mac --publish never",
+    "publish:win": "pnpm build && electron-builder --win --publish always",
+    "publish:mac": "pnpm build && electron-builder --mac --publish always"
   },
   "keywords": [],
   "author": "",
