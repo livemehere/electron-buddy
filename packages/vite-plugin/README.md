@@ -39,7 +39,7 @@ pnpm add -D @electron-buddy/vite-plugin electron terser
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "preview"
+    "start": "electron-buddy --preview"
   }
 }
 ```
