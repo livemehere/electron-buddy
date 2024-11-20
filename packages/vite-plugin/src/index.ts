@@ -4,6 +4,7 @@ import { runApp } from './utils/runApp';
 import AddressInfo = WebSocket.AddressInfo;
 import { type ChildProcess, exec } from 'child_process';
 import { join } from 'path';
+import { readdirSync } from 'fs';
 
 const DEFAULT_OUT_DIR = 'dist';
 const DEFAULT_MAIN_ENTRY = './main/index.ts';
@@ -32,13 +33,27 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
   return [
     {
       name: 'electron-buddy-renderer',
-      config: (_, { command, isPreview }) => {
+      config: (config, { command, isPreview }) => {
+        const { root } = config;
+        const entries = readdirSync(join(process.cwd(), root))
+          .filter((file) => file.endsWith('.html'))
+          .reduce(
+            (acc, html) => ({
+              ...acc,
+              [html.split('.')[0]]: join(root, html)
+            }),
+            {}
+          );
+
         return {
           base: '',
           build: {
             emptyOutDir: command === 'build',
             outDir: join(outDirBase, 'renderer'),
-            minify: command === 'build' ? 'terser' : false
+            minify: command === 'build' ? 'terser' : false,
+            rollupOptions: {
+              input: entries
+            }
           },
           server: {
             open: isPreview

@@ -131,12 +131,43 @@ export default defineConfig({
 # CLI
 
 ```bash
-    Usage: electron-buddy [options]
-    
-    Options:
-        --help      Show help message
-        --preview   Run electron app with 'main' entry file (same as 'electron .')
+ Usage: electron-buddy [options]
+
+Options:
+    --help      Show help message
+    --preview   Run electron app with 'main' entry file (same as 'electron .')
 ```
+
+# Multiple Entries
+
+Sometimes, you may need multiple renderers, such as for a splash screen, a loading screen, and more. To achieve this, simply add additional .html files to the renderer directory(`root` of `vite.config.*`).
+```bash 
+src
+├── renderer
+│   ├── index.html
+│   ├── splash.html
+│   ├── loading.html
+
+# after build..
+
+dist
+├── renderer
+    ├── index.html
+    ├── splash.html
+    ├── loading.html
+```
+
+### main entry file (`main/index.ts`)
+
+```ts
+if (process.env.NODE_ENV === 'development' && process.env['RENDERER_URL']) {
+  await win.loadURL(process.env['RENDERER_URL'] + '/splash.html'); // vite dev server url (dev server)
+} else {
+  await win.loadFile(join(__dirname, './renderer/splash.html')); // relative path (build)
+}
+```
+
+
 
 # Notice
 
