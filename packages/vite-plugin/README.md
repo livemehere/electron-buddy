@@ -104,8 +104,6 @@ src
 
 ---
 
-# Customize
-
 ## Custom OutDir & Entries
 
 > ❗️Remember to update the main field in package.json if you change the output directory (e.g., to ./out/main.js).
@@ -128,7 +126,7 @@ export default defineConfig({
 
 ```
 
-# CLI
+## CLI
 
 ```bash
  Usage: electron-buddy [options]
@@ -138,7 +136,7 @@ Options:
     --preview   Run electron app with 'main' entry file (same as 'electron .')
 ```
 
-# Multiple Entries
+## Multiple Entries
 
 Sometimes, you may need multiple renderers, such as for a splash screen, a loading screen, and more. To achieve this, simply add additional .html files to the renderer directory(`root` of `vite.config.*`).
 ```bash 
