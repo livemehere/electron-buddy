@@ -1,0 +1,27 @@
+{
+  "name": "@electron-buddy/ipc",
+  "version": "1.0.0",
+  "author": "livemehere",
+  "license": "ISC",
+  "description": "electron IPC helper",
+  "homepage": "https://github.com/livemehere/electron-buddy",
+  "repository": "https://github.com/livemehere/electron-buddy",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "electron",
+    "IPC",
+    "helper"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "peerDependencies": {
+    "electron": "*"
+  }
+}
