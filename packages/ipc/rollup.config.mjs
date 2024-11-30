@@ -6,11 +6,18 @@ const build = (entryType) => {
   /** @type {import('rollup').RollupOptions} */
   const options = {
     input: `src/${entryType}/index.ts`,
-    output: {
-      file: `dist/${entryType}/index.js`,
-      format: 'es',
-      inlineDynamicImports: true
-    },
+    output: [
+      {
+        file: `dist/${entryType}/index.cjs`,
+        format: 'cjs',
+        inlineDynamicImports: true
+      },
+      {
+        file: `dist/${entryType}/index.mjs`,
+        format: 'es',
+        inlineDynamicImports: true
+      }
+    ],
     external: ['electron'],
     plugins: [typescript()]
   };
