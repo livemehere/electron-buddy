@@ -13,11 +13,9 @@ const ipcObject: IpcBridgeHandler<ElectronBuddyInvokeMap, ElectronBuddyMessageMa
       listenerMap.set(channel as string, new Set());
     }
     listenerMap.get(channel as string)?.add(l);
-    console.log(listenerMap);
     return () => {
       ipcRenderer.off(channel as string, l);
       listenerMap.get(channel as string)?.delete(l);
-      console.log(listenerMap);
     };
   }
 };
