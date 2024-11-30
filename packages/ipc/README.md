@@ -148,6 +148,28 @@ export default function App() {
 
 `mainIpc`, `rendererIpc` is a wrapper of `ipcMain`, `ipcRenderer` respectively. It provides type-safe IPC communication between main and renderer processes.
 
+### `rendererIpc.invoke`
+
+```ts
+rendererIpc.invoke(channel:string, payload:Payload)
+
+// Is equivalent to
+
+ipcRenderer.invoke(channel, payload);
+```
+
+### `rendererIpc.on`
+
+```ts
+rendererIpc.on(channel:string, listener:(response:Response) => void): ()=> void
+
+// Is equivalent to
+
+ipcRenderer.on(channel, (event, response) => {
+  listener(response);
+});
+```
+
 ### `mainIpc.handle`
 
 ```ts
@@ -171,24 +193,4 @@ mainIpc.send(webContents:WebContents, channel:string, payload:Payload)
 webContents.send(channel, payload);
 ```
 
-### `rendererIpc.on`
 
-```ts
-rendererIpc.on(channel:string, listener:(response:Response) => void)
-
-// Is equivalent to
-
-ipcRenderer.on(channel, (event, response) => {
-  listener(response);
-});
-```
-
-### `rendererIpc.invoke`
-
-```ts
-rendererIpc.invoke(channel:string, payload:Payload)
-
-// Is equivalent to
-
-ipcRenderer.invoke(channel, payload);
-```

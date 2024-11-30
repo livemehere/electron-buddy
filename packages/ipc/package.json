@@ -1,6 +1,6 @@
 {
   "name": "@electron-buddy/ipc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "livemehere",
   "license": "ISC",
   "description": "electron IPC helper",
