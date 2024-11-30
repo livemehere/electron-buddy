@@ -1,10 +1,10 @@
 import { ipcMain } from 'electron';
-import type { Ipc } from '../index';
+import { InvokeMap, IpcMainHandler, OnMap } from '../index';
 
-export const mainIpc: Ipc.TIpcHandler = {
+export const mainIpc: IpcMainHandler<InvokeMap, OnMap> = {
   handle: (channel, listener) =>
-    ipcMain.handle(channel, (e, body) => {
+    ipcMain.handle(channel as string, (e, body) => {
       return listener(body);
     }),
-  send: (webContent, channel, response) => webContent.send(channel, response)
+  send: (webContent, channel, response) => webContent.send(channel as string, response)
 };

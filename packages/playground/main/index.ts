@@ -2,6 +2,7 @@ import { BrowserWindow, app } from 'electron';
 import { createWindow } from './createWindow';
 import log from 'electron-log/main';
 import { autoUpdater } from 'electron-updater';
+import { mainIpc } from '@electron-buddy/ipc/main';
 
 let mainWin: BrowserWindow;
 async function main() {
@@ -17,6 +18,10 @@ async function main() {
     if (BrowserWindow.getAllWindows().length === 0) {
       mainWin = await createWindow({ width: 1280, height: 720, path: '/' });
     }
+  });
+
+  mainIpc.handle('ping2', async () => {
+    return 'pong';
   });
 }
 main().catch(console.error);

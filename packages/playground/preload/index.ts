@@ -1,5 +1,3 @@
-import { contextBridge } from 'electron';
+import { registerIpc } from '@electron-buddy/ipc/preload';
 
-contextBridge.exposeInMainWorld('app', {
-  label: 'app'
-});
+registerIpc();
