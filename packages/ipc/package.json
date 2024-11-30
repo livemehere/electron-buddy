@@ -1,6 +1,6 @@
 {
   "name": "@electron-buddy/ipc",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "livemehere",
   "license": "ISC",
   "description": "electron IPC helper",
@@ -13,10 +13,20 @@
       "import": "./dist/main/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./renderer": {
+      "require": "./dist/renderer/index.js",
+      "import": "./dist/renderer/index.js",
+      "types": "./dist/renderer/index.d.ts"
+    },
     "./preload": {
       "require": "./dist/preload/index.js",
       "import": "./dist/preload/index.js",
       "types": "./dist/preload/index.d.ts"
+    },
+    "./utils": {
+        "require": "./dist/utils/index.ts",
+        "import": "./dist/utils/index.ts",
+        "types": "./dist/utils/index.d.ts"
     }
   },
   "scripts": {

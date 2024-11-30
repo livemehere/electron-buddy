@@ -8,7 +8,7 @@ const build = (entryType) => {
     input: `src/${entryType}/index.ts`,
     output: {
       file: `dist/${entryType}/index.js`,
-      format: 'esm',
+      format: 'es',
       inlineDynamicImports: true
     },
     external: ['electron'],
@@ -18,20 +18,22 @@ const build = (entryType) => {
   return options;
 };
 
-const buildDts = (entryType, copyRoot) => {
+const buildDts = (entryType, copyFiles) => {
   /** @type {import('rollup').RollupOptions} */
   const options = {
     input: `src/${entryType}/index.ts`,
     output: {
       file: `dist/${entryType}/index.d.ts`,
-      format: 'esm'
+      format: 'es'
     },
     plugins: [
       {
         name: 'copy-root-dts',
         writeBundle() {
-          if (copyRoot) {
-            fs.copyFileSync('./src/index.d.ts', './dist/index.d.ts');
+          if (copyFiles) {
+            fs.mkdirSync('dist/utils', { recursive: true });
+            fs.copyFileSync('src/utils/index.ts', 'dist/utils/index.ts');
+            fs.copyFileSync('src/index.d.ts', 'dist/index.d.ts');
           }
         }
       },
@@ -43,4 +45,12 @@ const buildDts = (entryType, copyRoot) => {
   return options;
 };
 
-export default [build('main'), build('preload'), buildDts('main'), buildDts('preload', true)];
+
+export default [
+  build('main'),
+  build('preload'),
+  build('renderer'),
+  buildDts('main'),
+  buildDts('preload'),
+  buildDts('renderer',true)
+];

@@ -20,9 +20,14 @@ async function main() {
     }
   });
 
-  mainIpc.handle('ping2', async () => {
+  mainIpc.handle('ping', async () => {
     return 'pong';
   });
+
+  setInterval(() => {
+    mainIpc.send(mainWin.webContents, 'tick', 1);
+  }, 1000);
+
 }
 main().catch(console.error);
 

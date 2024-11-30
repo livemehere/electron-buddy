@@ -1,13 +1,24 @@
-declare module '@electron-buddy/ipc' {
-  interface InvokeMap {
-    ping: {
-      response: 'pong';
-      body: undefined;
-    };
+export {};
+
+declare module "@electron-buddy/ipc/main" {
+  interface ElectronBuddyInvokeMap extends InvokeMap {}
+  interface ElectronBuddyMessageMap extends MessageMap {}
+}
+
+declare module "@electron-buddy/ipc/renderer" {
+  interface ElectronBuddyInvokeMap extends InvokeMap {}
+  interface ElectronBuddyMessageMap extends MessageMap {}
+}
+
+type InvokeMap = {
+  ping:{
+    payload:string,
+    response: 'pong',
   }
-  interface OnMap {
-    tick: {
-      response: number;
-    };
+}
+
+type MessageMap = {
+  tick:{
+    response:number;
   }
 }
