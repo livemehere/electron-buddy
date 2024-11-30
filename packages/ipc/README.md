@@ -22,7 +22,7 @@
 
 Each environment in Electron, namely main and renderer, operates in completely independent spaces. To enable these environments to share resources, Electron provides IPC (Inter-Process Communication). Additionally, Electron connects these environments through preload scripts.
 
-While you can use ipcRenderer and ipcMain to facilitate this communication, managing types separately is necessary because the codebases for these environments must remain distinct. @electron-buddy/ipc was created to solve this problem efficiently.
+While you can use ipcRenderer and ipcMain to facilitate this communication, managing types separately is necessary because the codebases for these environments must remain distinct. `@electron-buddy/ipc` was created to solve this problem efficiently.
 
 This library allows you to declare channel, payload, and response globally, enabling seamless type-safe interaction between the main and renderer environments.
 
@@ -88,6 +88,8 @@ registerIpc();
 ### `main/index.ts`
 
 ```ts
+import { mainIpc } from '@electron-buddy/ipc/main';
+
 async function main() {
   log.initialize();
 

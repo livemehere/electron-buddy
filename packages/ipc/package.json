@@ -1,11 +1,11 @@
 {
   "name": "@electron-buddy/ipc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "livemehere",
   "license": "ISC",
   "description": "electron IPC helper",
   "homepage": "https://github.com/livemehere/electron-buddy",
-  "repository": "https://github.com/livemehere/electron-buddy",
+  "repository": "https://github.com/livemehere/electron-buddy",¡
   "types": "./dist/index.d.ts",
   "exports": {
     "./main": {
