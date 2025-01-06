@@ -1,6 +1,6 @@
 {
   "name": "@electron-buddy/ipc",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "livemehere",
   "license": "ISC",
   "description": "electron IPC helper",
@@ -8,6 +8,9 @@
   "repository": "https://github.com/livemehere/electron-buddy",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    },
     "./main": {
       "require": "./dist/main/index.cjs",
       "import": "./dist/main/index.mjs",
