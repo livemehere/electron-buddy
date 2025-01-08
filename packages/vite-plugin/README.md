@@ -123,7 +123,18 @@ export default defineConfig({
         })
     ]
 });
+```
 
+## Include Additional Files to build files
+
+```ts
+export default defineConfig({
+    plugins: [
+        electron({
+            copyDirs: ['assets'] // copy assets directory to build directory
+        })
+    ]
+});
 ```
 
 ## CLI
