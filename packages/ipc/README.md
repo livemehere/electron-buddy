@@ -64,7 +64,7 @@ declare module "@electron-buddy/ipc/renderer" {
   */
 type InvokeMap = {
   ping:{
-    payload:string,
+    payload: null,
     response: 'pong',
   }
 }
