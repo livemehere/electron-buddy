@@ -4,5 +4,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   root: './renderer',
-  plugins: [electron(), react()]
+  plugins: [electron({
+    copyDirs:[
+      './assets/icons'
+    ]
+  }), react()]
 });

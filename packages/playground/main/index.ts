@@ -24,9 +24,6 @@ async function main() {
     return 'pong';
   });
 
-  setInterval(() => {
-    mainIpc.send(mainWin.webContents, 'tick', 1);
-  }, 1000);
 
 }
 main().catch(console.error);

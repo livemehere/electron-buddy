@@ -5,6 +5,7 @@ import AddressInfo = WebSocket.AddressInfo;
 import { type ChildProcess, exec } from 'child_process';
 import { join } from 'path';
 import { readdirSync } from 'fs';
+import { copyDir } from './utils/copyDir';
 
 const DEFAULT_OUT_DIR = 'dist';
 const DEFAULT_MAIN_ENTRY = './main/index.ts';
@@ -18,6 +19,7 @@ type Options = {
   main?: {
     entry?: string;
   };
+  copyDirs?:string[];
 };
 
 export async function electron(options: Options = {}): Promise<PluginOption[]> {
@@ -99,6 +101,17 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
         await buildBundle(...mainBuildArgs, () => {
           console.log('🚀 main build end');
         });
+      }
+    },
+    {
+      name: 'copy-files',
+      apply: 'build',
+      async buildStart() {
+        if (options.copyDirs) {
+          for (const dir of options.copyDirs) {
+            copyDir(dir, join(outDirBase, dir));
+          }
+        }
       }
     }
   ];
