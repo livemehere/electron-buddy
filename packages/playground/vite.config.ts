@@ -5,8 +5,19 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   root: './renderer',
   plugins: [electron({
+    main:{
+      alias:{
+        "@shared": "../shared"
+      }
+    },
     copyDirs:[
       './assets/icons'
     ]
-  }), react()]
+  }), react()],
+  resolve:{
+    alias:{
+      '@renderer': '../renderer',
+      "@shared": "../shared",
+    }
+  }
 });

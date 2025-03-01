@@ -3,9 +3,15 @@ import { createWindow } from './createWindow';
 import log from 'electron-log/main';
 import { autoUpdater } from 'electron-updater';
 import { mainIpc } from '@electron-buddy/ipc/main';
+import { math } from '@shared/index';
+
+
+console.log(math.add(1,2));
+
 
 let mainWin: BrowserWindow;
 async function main() {
+
   log.initialize();
 
   await app.whenReady();

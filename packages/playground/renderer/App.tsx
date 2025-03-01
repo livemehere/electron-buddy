@@ -1,6 +1,12 @@
 import log from 'electron-log/renderer';
 import { rendererIpc } from '@electron-buddy/ipc/renderer';
 import { useEffect } from 'react';
+import { math } from '@shared/index';
+import { SharedType } from '@shared/type';
+
+const a:SharedType = {
+  id:'shared'
+}
 
 export default function App() {
   useEffect(() => {
@@ -11,6 +17,8 @@ export default function App() {
       off();
     };
   }, []);
+
+
   return (
     <div>
       <h1>App</h1>
@@ -22,6 +30,7 @@ export default function App() {
       >
         Ping
       </button>
+      {math.add(1,2)}
     </div>
   );
 }
