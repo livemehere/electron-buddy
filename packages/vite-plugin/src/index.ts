@@ -107,7 +107,6 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
     },
     {
       name: 'copy-files',
-      apply: 'build',
       async buildStart() {
         if (options.copyDirs) {
           for (const dir of options.copyDirs) {
