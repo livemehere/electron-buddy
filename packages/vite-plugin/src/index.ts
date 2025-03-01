@@ -15,9 +15,11 @@ type Options = {
   outDir?: string;
   preload?: {
     entry?: string;
+    alias?: Record<string, string>;
   };
   main?: {
     entry?: string;
+    alias?: Record<string, string>;
   };
   copyDirs?:string[];
 };
@@ -29,8 +31,8 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
   const mainEntry = options.main?.entry ?? DEFAULT_MAIN_ENTRY;
   const preloadEntry = options.preload?.entry ?? DEFAULT_PRELOAD_ENTRY;
 
-  const preloadBuildArgs = [preloadEntry, outDirBase, 'preload.js'] as const;
-  const mainBuildArgs = [mainEntry, outDirBase, 'main.js'] as const;
+  const preloadBuildArgs = [preloadEntry, outDirBase, 'preload.js', (options.preload?.alias ?? {})] as const;
+  const mainBuildArgs = [mainEntry, outDirBase, 'main.js',(options.main?.alias ?? {})] as const;
 
   return [
     {
@@ -59,7 +61,7 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
           },
           server: {
             open: isPreview
-          }
+          },
         };
       }
     },

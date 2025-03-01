@@ -10,7 +10,7 @@ const genOption = (typeOnly) => {
       format: 'cjs',
       inlineDynamicImports: true
     },
-    external: ['vite', 'child_process', 'path', 'fs'],
+    external: ['vite', 'child_process', 'path', 'fs','terser'],
     plugins: [{ ...(typeOnly ? dts() : typescript()) }]
   };
 

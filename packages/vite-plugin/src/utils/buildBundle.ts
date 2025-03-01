@@ -4,6 +4,7 @@ export default function buildBundle(
   input: string,
   outDir: string,
   filename: string,
+  alias: Record<string, string>,
   onBuildEnd: () => void,
   watch = false
 ) {
@@ -32,6 +33,9 @@ export default function buildBundle(
           onBuildEnd();
         }
       }
-    ]
+    ],
+    resolve:{
+      alias
+    }
   });
 }
