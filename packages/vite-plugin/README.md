@@ -104,9 +104,11 @@ src
 
 ---
 
-## Custom OutDir & Entries
+## Custom OutDir & Entries (and additional options)
 
 > ❗️Remember to update the main field in package.json if you change the output directory (e.g., to ./out/main.js).
+
+preload & main expose few options to customize the build process.
 
 ```ts
 export default defineConfig({
@@ -115,10 +117,13 @@ export default defineConfig({
         electron({
             outDir: './out', // custom output directory
             preload: {
-                entry: './preload2/index.ts' // custom preload entry
+                entry: './preload2/index.ts', // custom preload entry
+                alias:{} // optional
+              
             },
             main: {
-                entry: './main2/index.ts' // custom main entry
+                entry: './main2/index.ts', // custom main entry
+                alias:{} // optional
             }
         })
     ]
