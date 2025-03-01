@@ -22,6 +22,7 @@ type Options = {
     alias?: Record<string, string>;
   };
   copyDirs?:string[];
+  injectToHead?:string;
 };
 
 export async function electron(options: Options = {}): Promise<PluginOption[]> {
@@ -112,6 +113,19 @@ export async function electron(options: Options = {}): Promise<PluginOption[]> {
           for (const dir of options.copyDirs) {
             copyDir(dir, join(outDirBase, dir));
           }
+        }
+      }
+    },
+    {
+      name: 'inject-into-headTag',
+      transformIndexHtml: {
+        order: 'pre',
+        handler(html) {
+          const tagStr = options.injectToHead
+          if(!tagStr) return html;
+          return html.replace(/<head>(.+)<\/head>/gms, (_, origin) => {
+            return `${origin}${tagStr}`;
+          });
         }
       }
     }
